@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import styles from './hero.css'
 import ItemCount from '../toolkit/ItemCount'
-import { customFetch } from '../toolkit/customFetch'
+import { getItem } from '../toolkit/getItem'
 import { products } from '../assets/products'
 import { ItemList } from '../items/ItemList'
-import {Spinner} from '@chakra-ui/react'
+import Spinner from 'react-bootstrap/Spinner';
 
 export const ItemListContainer = ({greeting}) => {
 
@@ -12,12 +11,11 @@ export const ItemListContainer = ({greeting}) => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        customFetch(products)
+        getItem(products)
             .then(res => {
                 setLoading(false)
                 setListProducts(res)
             })
-
     }, [])
 
     console.log(listProducts)
@@ -27,18 +25,16 @@ export const ItemListContainer = ({greeting}) => {
     }
 
     return (
-        <section style={styles} className="d-flex align-items-center">
-            <div className="container d-flex justify-content-center containerHero" >
-                <div className="row">
-                    <div className="col">
-                        <div><h2>{greeting}</h2></div>
+        <>
+            <section className="py-5">
+                <div className="container px-4 px-lg-5 mt-5">
+                    <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                        {/* <div><h2>{greeting}</h2></div> */}
                         {/* <ItemCount initial={1} stock={15} onAdd={onAdd} /> */}
+                        {loading ? <Spinner animation="border" variant="success" /> : <ItemList listProducts={listProducts}/>}
                     </div>
-                    {loading ? <Spinner/> : <ItemList listProducts={listProducts}/>}
-                    
                 </div>
-            </div>
-        </section>
-        
+            </section>
+        </>
     )
 }

@@ -1,8 +1,8 @@
-    
 .container{
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
+display: grid;
+justify-content: center;
+align-items: baseline;
+
 }
 
 p{
