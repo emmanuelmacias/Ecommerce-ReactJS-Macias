@@ -4,19 +4,19 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../../img/logo-small.png'
 import { CartWidget } from './CartWidget';
+import { Link, NavLink } from 'react-router-dom';
+import { NavCat } from './NavCat'
 
 const NavBar= () => {
+
     return (
         <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home"><img src={logo} alt="logo"/></Navbar.Brand>
-          <Nav className="justify-content-center">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#category">Categorias</Nav.Link>
-            <Nav.Link href="#contact">Contacto</Nav.Link>
-          </Nav>
-          <CartWidget/> {/* CONTAINER DEL CARRO DE COMPRAS */}
+          <Link to={'/'}><Navbar.Brand href="#home"><img src={logo} alt="logo"/></Navbar.Brand></Link>
+            <Link to={'/'}>Home</Link>
+            <NavCat/>
+            <Link to={'/cart'}><CartWidget/></Link> {/* CONTAINER DEL CARRO DE COMPRAS */}
         </Container>
       </Navbar>
     </>

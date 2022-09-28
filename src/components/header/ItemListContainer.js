@@ -4,21 +4,34 @@ import { getItem } from '../toolkit/getItem'
 import { products } from '../assets/products'
 import { ItemList } from '../items/ItemList'
 import Spinner from 'react-bootstrap/Spinner';
+import { useParams } from 'react-router-dom';
 
 export const ItemListContainer = ({greeting}) => {
+
+    let { idCategory } = useParams();
 
     const [listProducts, setListProducts] = useState([])
     const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
-        getItem(products)
-            .then(res => {
-                setLoading(false)
-                setListProducts(res)
-            })
-    }, [])
+    const URL_BASE = products;
+ /*    const URL_CATEGORY = products.map ((product) => {
+        return product.category;
+    }) */
 
-    console.log(listProducts)
+    let filterCategory = products.filter(product => product.category === idCategory );
+
+    console.log(idCategory)
+    console.log(filterCategory)
+
+    useEffect(() => { 
+        const getProduct = async () => {
+            
+            const res = await getItem( (idCategory === undefined) ? URL_BASE : filterCategory);
+            setLoading(false)
+            setListProducts(res)
+        }
+        getProduct()
+    }, [idCategory])
 
     const onAdd = (counter) => {
         console.log(`Se agregaron al carrito ${counter} productos.`);
