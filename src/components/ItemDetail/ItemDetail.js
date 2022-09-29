@@ -1,7 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ItemCount from '../toolkit/ItemCount'
+import { Link } from 'react-router-dom';
 
 export const ItemDetail = ({product}) => {
+
+    const [isButtonPressed, setIsButtonPressed] = useState(false);
+
+    const onAdd = (counter) => {
+        setIsButtonPressed(true);
+        console.log(`Se agregaron al carrito ${counter} productos.`);
+    };
 
     return (
         <>
@@ -15,9 +23,19 @@ export const ItemDetail = ({product}) => {
                             <span>${product.price}</span>
                         </div>
                         <p className="lead">{product.description}</p>
-                        <div className="d-flex py-3">
-                            <ItemCount initial={1} stock={15} />
-                        </div>
+
+                        {!isButtonPressed ? (
+                            <div className="d-flex py-3">
+                                <ItemCount initial={1} stock={15} onAdd={onAdd} />
+                            </div>
+                        ) : (
+                            <Link to="/cart">
+                                <button className="btn btn-outline-dark flex-shrink-0" type="button">
+                                    Finalizar Compra
+                                </button>
+                            </Link>
+                        )}
+
                     </div>
                 </div>
             </div>

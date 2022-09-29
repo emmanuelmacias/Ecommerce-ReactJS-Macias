@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 
 
-const ItemCount = ({initial, stock}) => {
+const ItemCount = ({initial, stock, onAdd}) => {
 
     const [counter, setCounter] = useState(initial);
 
@@ -10,13 +10,13 @@ const ItemCount = ({initial, stock}) => {
 
     const subtract = () => counter > initial && setCounter(counter - 1);
 
-    const addToCart = () => {
+/*     const addToCart = () => {
         onAdd(counter);
-    }
+    } */
 
-    const onAdd = (counter) => {
+ /*    const onAdd = (counter) => {
         console.log(`Se agregaron al carrito ${counter} productos.`);
-    }
+    } */
 
     return (
         <>
@@ -24,7 +24,7 @@ const ItemCount = ({initial, stock}) => {
             <div><p className='px-2'>{counter}</p></div>
             <Button variant="success" disabled={counter === stock} onClick={add}>+</Button>
             <div className="d-flex px-4">
-                <button className="btn btn-outline-dark flex-shrink-0" type="button" onClick={addToCart}>
+                <button className="btn btn-outline-dark flex-shrink-0" type="button" onClick={() => onAdd(counter)}>
                     Agregar al carrito
                 </button>
             </div>
