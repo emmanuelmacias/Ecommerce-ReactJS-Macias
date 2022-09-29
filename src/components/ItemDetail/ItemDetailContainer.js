@@ -7,27 +7,26 @@ import { useParams } from 'react-router-dom';
 
 export const ItemDetailContainer = () => {
 
-    let { idProduct } = useParams();
+    let { id } = useParams();
 
     const [product, setProduct] = useState({})
     const [loading, setLoading] = useState(true)
 
-    let filterProduct = products.filter(product => product.id === idProduct);
-    
-    console.log(filterProduct)
-    
-    useEffect(() => {
-        getItem(products)
-            .then(res => {
-                setLoading(false)
-                setProduct(res)
-            })
-    }, [idProduct])
+    const URL_BASE = products;
+
+    useEffect(() => { 
+        const getProduct = async () => {
+            const res = await getItem(URL_BASE, parseInt(id));
+            setLoading(false)
+            setProduct(res)
+        }
+        getProduct()
+    }, [id])
 
     return (
         <>
             <section className="py-5">
-                {loading ? <Spinner animation="border" variant="success" /> : <ItemDetail product={filterProduct} />}
+                {loading ? <Spinner animation="border" variant="success" /> : <ItemDetail product={product} />}
             </section>
         </>
     )

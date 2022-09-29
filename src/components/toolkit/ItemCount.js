@@ -1,13 +1,8 @@
 import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Container from 'react-bootstrap/Container';
-import styles from './ItemCount.css'
 
 
-
-
-const ItemCount = ({initial, stock, onAdd}) => {
+const ItemCount = ({initial, stock}) => {
 
     const [counter, setCounter] = useState(initial);
 
@@ -19,26 +14,19 @@ const ItemCount = ({initial, stock, onAdd}) => {
         onAdd(counter);
     }
 
+    const onAdd = (counter) => {
+        console.log(`Se agregaron al carrito ${counter} productos.`);
+    }
+
     return (
         <>
-            <div className="container">
-                <Card style={{ width: '18rem'}}>
-                    <Card.Img variant="top" src="" />
-                <Card.Body>
-                    <Card.Title style={{ textAlign: 'center' }}>Producto 1</Card.Title>
-                    <Card.Text>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis, perspiciatis!
-                    </Card.Text>
-                    <Container style={styles}>
-                        <Button variant="danger" disabled={counter === initial} onClick={subtract}>-</Button>
-                        <p>{counter}</p>
-                        <Button variant="success" disabled={counter === stock} onClick={add}>+</Button>
-                    </Container>
-                    <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div className="text-center"><Button variant="dark" className="btn mt-auto" onClick={addToCart}>Agregar al carrito</Button></div>
-                    </div>
-                </Card.Body>
-                </Card>
+            <Button variant="danger" disabled={counter === initial} onClick={subtract}>-</Button>
+            <div><p className='px-2'>{counter}</p></div>
+            <Button variant="success" disabled={counter === stock} onClick={add}>+</Button>
+            <div className="d-flex px-4">
+                <button className="btn btn-outline-dark flex-shrink-0" type="button" onClick={addToCart}>
+                    Agregar al carrito
+                </button>
             </div>
         </>
     )

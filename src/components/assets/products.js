@@ -1,6 +1,6 @@
 export const products = [
     {
-        id:0, 
+        id:1, 
         name: "Aromatizante Tilo 330ml repuesto",
         category: "perfumes-ambientales",
         price: 1400,
@@ -10,7 +10,7 @@ export const products = [
     },
 
     {
-        id:1,
+        id:2,
         name: "Aromatizante para Automovil Aqua y Brisa 100ml", 
         category: "perfumes-automovil",
         image: "https://biogreen.oppen.io/ecommerce/api/get_attached_file?OriginRecordName=Item&OriginId=10006&id=93&ts=98dce83da57b0395e163467c9dae521b",
@@ -20,7 +20,7 @@ export const products = [
     },
 
     {
-        id:2,
+        id:3,
         name: "Aceite Esencial Puro de Lavanda 10ml",
         category: "esenciales",
         image:"https://biogreen.oppen.io/ecommerce/api/get_attached_file?OriginRecordName=Item&OriginId=40965&id=117&ts=eb160de1de89d9058fcb0b968dbbbd68",
@@ -30,7 +30,7 @@ export const products = [
     },
 
     {
-        id:3,
+        id:4,
         name: "Limpiador concentrado Multiuso 300 ml Repuesto",
         category: "limpieza",
         image:"https://biogreen.oppen.io/ecommerce/api/get_attached_file?OriginRecordName=Item&OriginId=80301&id=33&ts=182be0c5cdcd5072bb1864cdee4d3d6e",
@@ -38,4 +38,5 @@ export const products = [
         price: 890,
         stock: 15
     },
+
 ];

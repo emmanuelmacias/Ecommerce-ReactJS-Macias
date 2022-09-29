@@ -1,6 +1,8 @@
 import React from 'react'
+import ItemCount from '../toolkit/ItemCount'
 
 export const ItemDetail = ({product}) => {
+
     return (
         <>
             <div className="container px-4 px-lg-5 my-5">
@@ -13,10 +15,8 @@ export const ItemDetail = ({product}) => {
                             <span>${product.price}</span>
                         </div>
                         <p className="lead">{product.description}</p>
-                        <div className="d-flex">
-                            <button className="btn btn-outline-dark flex-shrink-0" type="button">
-                                Agregar al carrito
-                            </button>
+                        <div className="d-flex py-3">
+                            <ItemCount initial={1} stock={15} />
                         </div>
                     </div>
                 </div>

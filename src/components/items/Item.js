@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import '../assets/styles.css';
 
 export const Item = ({product}) => {
+
     return (
         <>
             <div className="col mb-5">
@@ -19,7 +21,7 @@ export const Item = ({product}) => {
                     </div>
                     {/* Product actions */}
                     <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">Ver más</a></div>
+                        <Link to={`/product/${product.id}`}> <div className="text-center"><button className="btn btn-outline-dark mt-auto">Ver más</button></div></Link>
                     </div>
                 </div>
             </div>
