@@ -1,14 +1,16 @@
-import React, {useState} from 'react'
+import React, { useState, useContext} from 'react'
 import ItemCount from '../toolkit/ItemCount'
 import { Link } from 'react-router-dom';
+import { CartContext } from '../Context/CartContext';
 
 export const ItemDetail = ({product}) => {
 
     const [isButtonPressed, setIsButtonPressed] = useState(false);
+    const { addItem } = useContext(CartContext);
 
     const onAdd = (counter) => {
         setIsButtonPressed(true);
-        console.log(`Se agregaron al carrito ${counter} productos.`);
+        addItem(product, counter);
     };
 
     return (

@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
+import { CartContext } from '../Context/CartContext';
 
 export const CartWidget = () => {
+
+    const { quantity } = useContext(CartContext);
+
     return (
         <>
         <div className="cart-area">
-            <a cid="CartBtn" style={styles.links}><ShoppingCartTwoToneIcon color="success" fontSize="medium"/><span style={styles.span}>1</span></a>
+            <ShoppingCartTwoToneIcon color="success" fontSize="medium"/><span style={styles.span}>{quantity}</span>
         </div>
         </>
     )
